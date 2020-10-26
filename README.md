@@ -11,8 +11,8 @@ Segmentation based on [PyTorch](https://pytorch.org/).**
 The main features of this library are:
 
  - High level API (just two lines to create neural network)
- - 5 models architectures for binary and multi class segmentation (including legendary Unet)
- - 46 available encoders for each architecture
+ - 7 models architectures for binary and multi class segmentation (including legendary Unet)
+ - 57 available encoders for each architecture
  - All encoders have pre-trained weights for faster and better convergence
 
 ### Table of content
@@ -68,20 +68,21 @@ preprocess_input = get_preprocessing_fn('resnet18', pretrained='imagenet')
  - [FPN](http://presentations.cocodataset.org/COCO17-Stuff-FAIR.pdf)
  - [PSPNet](https://arxiv.org/abs/1612.01105)
  - [PAN](https://arxiv.org/abs/1805.10180)
- - [DeepLabV3](https://arxiv.org/abs/1706.05587)
+ - [DeepLabV3](https://arxiv.org/abs/1706.05587) and [DeepLabV3+](https://arxiv.org/abs/1802.02611)
 
 #### Encoders <a name="encoders"></a>
 
 |Encoder                         |Weights                         |Params, M                       |
 |--------------------------------|:------------------------------:|:------------------------------:|
-|resnet18                        |imagenet                        |11M                             |
+|resnet18                        |imagenet<br>ssl*<br>swsl*        |11M                             |
 |resnet34                        |imagenet                        |21M                             |
-|resnet50                        |imagenet                        |23M                             |
+|resnet50                        |imagenet<br>ssl*<br>swsl*        |23M                             |
 |resnet101                       |imagenet                        |42M                             |
 |resnet152                       |imagenet                        |58M                             |
-|resnext50_32x4d                 |imagenet                        |22M                             |
-|resnext101_32x8d                |imagenet<br>instagram           |86M                             |
-|resnext101_32x16d               |instagram                       |191M                            |
+|resnext50_32x4d                 |imagenet<br>ssl*<br>swsl*        |22M                             |
+|resnext101_32x4d                |ssl<br>swsl                     |42M                             |
+|resnext101_32x8d                |imagenet<br>instagram<br>ssl*<br>swsl*|86M                         |
+|resnext101_32x16d               |instagram<br>ssl*<br>swsl*        |191M                            |
 |resnext101_32x32d               |instagram                       |466M                            |
 |resnext101_32x48d               |instagram                       |826M                            |
 |dpn68                           |imagenet                        |11M                             |
@@ -120,6 +121,18 @@ preprocess_input = get_preprocessing_fn('resnet18', pretrained='imagenet')
 |efficientnet-b7                 |imagenet                        |63M                             |
 |mobilenet_v2                    |imagenet                        |2M                              |
 |xception                        |imagenet                        |22M                             |
+|timm-efficientnet-b0            |imagenet<br>advprop<br>noisy-student|4M                              |
+|timm-efficientnet-b1            |imagenet<br>advprop<br>noisy-student|6M                              |
+|timm-efficientnet-b2            |imagenet<br>advprop<br>noisy-student|7M                              |
+|timm-efficientnet-b3            |imagenet<br>advprop<br>noisy-student|10M                             |
+|timm-efficientnet-b4            |imagenet<br>advprop<br>noisy-student|17M                             |
+|timm-efficientnet-b5            |imagenet<br>advprop<br>noisy-student|28M                             |
+|timm-efficientnet-b6            |imagenet<br>advprop<br>noisy-student|40M                             |
+|timm-efficientnet-b7            |imagenet<br>advprop<br>noisy-student|63M                             |
+|timm-efficientnet-b8            |imagenet<br>advprop             |84M                             |
+|timm-efficientnet-l2            |noisy-student                   |474M                            |
+
+\* `ssl`, `wsl` - semi-supervised and weakly-supervised learning on ImageNet ([repo](https://github.com/facebookresearch/semi-supervised-ImageNet1K-models)).
 
 ### Models API <a name="api"></a>
 
